@@ -23,8 +23,10 @@ class AddGameViewController: UIViewController ,UIPickerViewDelegate, UIPickerVie
     }
     
     //Properties
-    let genres = ["RPG", "FPS", "sports", "actionadventure",  "sidescroller", "battleroyale"]
     
+    let genres = ["RPG", "FPS", "sports", "actionadventure",  "sidescroller", "battleroyale"]
+    var selectedGenre: String = "RPG"
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var genrePickerView: UIPickerView!
@@ -54,9 +56,55 @@ class AddGameViewController: UIViewController ,UIPickerViewDelegate, UIPickerVie
                 return
         }
         
+        func getGenreInput(_ index: String) -> Game.Genre {
+            switch index {
+            case "RPG":
+                return .RPG
+            case "FPS":
+                return .FPS
+            case "sports":
+                return .sports
+            case "actionadventure":
+                return .actionadventure
+            case "sidescroller":
+                return .sidescroller
+            case "battleroyale":
+                return .battleroyale
+            default:
+                return .RPG
+            }
+        }
+        
+        func getRatingInput(_ index: Int) -> Game.Rating{
+            switch index {
+            case 0 :
+                return .mature
+            case 1:
+                return .everyone
+            case 2:
+                return .teen
+            case 3:
+                return .E10
+            default:
+                return .mature
+            }
+        }
+        
         //selectionlabel.text = genre[pickerview.selectedRow(incomponent: 0)]
-        Library.sharedInstance.games.append(Game(title: addedTitle, genre: .actionadventure, rating: .E10, description: addedDesc))
-        performSegue(withIdentifier: "AddGameToLibrary", sender: self)
+        let newGame = Game(title: addedTitle, genre: getGenreInput(selectedGenre), rating: getRatingInput(ratingSegmentedController.selectedSegmentIndex), description: addedDesc)
+let addAlert = UIAlertController(title: "Game Added", message: "\(newGame.title) has been added to your library!", preferredStyle: .alert)
+        let addGameAction = UIAlertAction(title: "Thanks", style: .default)
+        {UIAlertAction in
+        Library.sharedInstance.games.append(newGame)
+            self.navigationController?.popViewController(animated: true)
+            
+        }
+        addAlert.addAction(addGameAction)
+    self.present(addAlert, animated: true, completion: nil)
+        
+
+        
+        
     }
 
 }

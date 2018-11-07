@@ -19,11 +19,21 @@ class LibraryViewController: UIViewController {
         
         super.viewDidLoad()
         
+        if library.games.count == 0 {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
-        self.tableView.reloadData()
+        
+    
+        }
+        tableView.reloadData()
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
 }
 
 extension LibraryViewController: UITableViewDelegate, UITableViewDataSource {

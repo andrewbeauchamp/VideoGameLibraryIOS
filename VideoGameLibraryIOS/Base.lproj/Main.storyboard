@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3DU-ki-BTl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" rowHeight="80" id="GCS-7r-d8U" customClass="LibraryCell" customModule="VideoGameLibraryIOS" customModuleProvider="target">
@@ -189,7 +189,6 @@
                                 </state>
                                 <connections>
                                     <action selector="addGameTapped:" destination="20F-yt-xla" eventType="touchUpInside" id="FBk-Bb-aKt"/>
-                                    <segue destination="zY6-U8-QeH" kind="show" identifier="AddGameToLibrary" id="vCM-Q4-ssj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -226,7 +225,4 @@
             <point key="canvasLocation" x="124" y="155.17241379310346"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="vCM-Q4-ssj"/>
-    </inferredMetricsTieBreakers>
 </document>
